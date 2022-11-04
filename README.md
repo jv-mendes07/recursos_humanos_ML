@@ -1,1 +1,3 @@
-# recursos_humanos_ML
+# Recursos Humanos (Modelo de Propensão)
+### Projeto de Machine Learning
+
