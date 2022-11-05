@@ -41,9 +41,12 @@ df.columns = df.columns.str.lower()
 
 * Dados nulos:
 
-Verifiquei com o método .isna().sum() para saber a quantidade de dados ausentes por coluna, felizmente foi verificável que não há nenhuma coluna com dados nulos presentes.
+Apliquei o método .isna().sum() para saber a quantidade de dados ausentes por coluna, felizmente foi verificável que não há nenhuma coluna com dados nulos presentes.
 
 Concluído o processo de tratamento dos dados, comecei a focar no entendimento dos dados através da análise exploratória, para em sequência aplicar o modelo de machine learning que pudesse prever a propensão de demissão ou retenção dos funcionários da empresa.
 
 ### Análise exploratória de dados (EDA):
 
+Antes de iniciar a etapa de análise exploratória, é indispensável que saibamos sobre o quê cada coluna se trata:
+
+* satisfaction_level: Tal variável mede a taxa de satisfação do funcionário na empresa 
