@@ -7,7 +7,7 @@ Com base nos objetivos hipotéticos citados acima, realizei uma limpeza e uma an
 
 ![](./img/capa.jpg)
 
-Importei Pandas, Numpy, Seaborn e Matplotlib para realizar o processo de tratamento, manipulação e visualização de dados:
+Para iniciar o projeto, importei as bibliotecas Pandas, Numpy, Seaborn e Matplotlib para realizar o processo de tratamento, manipulação e visualização de dados:
 
 ```
  import pandas as pd 
@@ -33,7 +33,7 @@ Após a verificação dessas informações primais, realizei dois processos simp
 
 * Renomeação das colunas:
 
-Mudei o formato textual do nome das colunas, para que todas colunas sejam registradas textualmente com letras minúsculas:
+Mudei o formato textual do nome das colunas, para que todas colunas fossem registradas textualmente com letras minúsculas:
 
 ```
 df.columns = df.columns.str.lower()
@@ -47,6 +47,69 @@ Concluído o processo de tratamento dos dados, comecei a focar no entendimento d
 
 ### Análise exploratória de dados (EDA):
 
-Antes de iniciar a etapa de análise exploratória, é indispensável que saibamos sobre o quê cada coluna se trata:
+Antes de iniciar a etapa de análise exploratória, é indispensável saber sobre o quê cada coluna se trata:
 
-* satisfaction_level: Tal variável mede a taxa de satisfação do funcionário na empresa 
+* satisfaction_level: Taxa de satisfação do funcionário com a empresa (entre a faixa de 0 e 1).
+* last_evaluation: Última avaliação de desempenho que os funcionários receberam (entre a faixa de 0 e 1).
+* number_project: Número de projetos que os funcionários participaram na empresa.
+* average_montly_hours: Média de horas de trabalho que cada funcionário gastou na empresa mensalmente.
+* time_spend_company: Anos de trabalho que cada funcionário teve na empresa.
+* work_acident: Informação sobre acidente de trabalho sofrido por cada funcionário (0 para não e 1 para sim).
+* left: Informação sobre o fato de cada funcionário ter sido demitido ou não da empresa (0 para não e 1 para sim).
+* promotion_last_5_years: Promoção na empresa nos últimos 5 anos para cada funcionário (0 para não e 1 para sim).
+* department: Departamento que cada funcionário trabalha na empresa.
+* salary: Classificação salarial de cada funcionário entre baixo, médio e alto salário.
+
+Após ter explicitado o quê cada variável significa, comecei tal análise com a seguinte questão:
+
+**(1)** **Qual é a quantidade de funcionários demitidos e retidos da empresa?**
+
+Com essa questão, quis saber a quantidade de funcionários que foram demitidos e a quantidade de funcionários que continuam na empresa, e como resposta obtive que 11 mil funcionários continuam na empresa e outros 3 mil funcionários foram demitidos da empresa, percentualmente expus tal informação com um gráfico de pizza:
+
+![](./img/gr_1.png)
+
+Notavelmente, observamos que mais que 3 / 4 dos funcionários continuam na empresa e somente 23 % dos funcionários foram demitidos.
+
+À partir dessa informação inicial, quis saber a quantidade de funcionário por classificação salarial, para depois obter mais insights sobre o dataset:
+
+**(2)** **Qual é a porcentagem de funcionários por classificação salarial?**
+
+Com um gráfico de rosca expus a resposta informacional para a questão acima:
+
+![](./img/gr_2.png)
+
+Como é observável acima, a suma maioria de 48 % dos funcionários recebem um salário considerado baixo, 43 % recebem um salário consideravelmente médio, e por fim uma minoria ínfima de funcionários recebem um salário considerado alto.
+
+Após saber a quantidade de funcionários demitidos e retidos, e após saber a quantidade de funcionários por classificação salarial, foi necessário saber a relação entre a taxa de demissão e retenção dos funcionários por classificação salarial:
+
+**(3)** **Qual é a taxa de retenção e demissão dos funcionários por classificação salarial?**
+
+Antes de responder tal questão com um gráfico, manipulei os dados para obter uma tabela que trouxesse a quantidade e a porcentagem de funcionários demitidos e retidos por classificação salarial:
+
+
+|        |      | qtd_left | perc_left |
+|--------|------|----------|-----------|
+| salary | left |          |           |
+| high   | 0    | 1155     | 7.70      |
+|        | 1    | 82       | 0.55      |
+| low    | 0    | 5144     | 34.30     |
+|        | 1    | 2172     | 14.48     |
+| medium | 0    | 5129     | 34.20     |
+|        | 1    | 1317     | 8.78      |
+
+Com os dados da tabela acima, expus a quantidade de funcionários retidos ou demitidos por classificação salarial através de um gráfico de barras que expusesse intuitivamente tais informações:
+
+![](./img/gr_3.png)
+
+O gráfico de barras acima fornece os seguintes insights:
+
+* Há uma quantidade aproximadamente equivalente de funcionários que continuam na empresa e recebem salários baixos ou médios.
+* Os funcionários que foram demitidos majoritariamente recebiam salários considerados baixo.
+* Os funcionários que recebem altos salários em suma maioria continuam na empresa.
+
+Após tais informações, poderíamos questionar **(a)** se baixos salários influenciam na demissão dos funcionários ou **(b)** se altos salários influenciam na retenção na retenção dos funcionários, no gráfico acima consegui algumas evidências que podem confirmar a tendência de tais hipóteses.
+
+Para continuar a análise com mais aprofundamento, explorei a quantidade de funcionários demitidos e retidos por departamento, para ver se há alguma relação entre retenção e demissão com o departamento que o funcionário trabalha:
+
+**(4)** Qual é a quantidade de retenções e demissões de funcionários por departamento?
+
