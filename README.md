@@ -123,3 +123,29 @@ Como é observável no gráfico acima, os setores de Técnico, Suporte e Vendas 
 
 É conclusivo que não há nenhuma evidência de que o departamento tenha alguma relação na demissão ou retenção dos funcionários, até porque estatisticamente é esperado que os setores que mais contratem funcionários, sejam os que mais demitam em comparação à outros setores que não contratam tantos funcionários assim.
 
+Após responder tais questões, investiguei às relações estatísticas entre a demissão e a retenção dos funcionários com às demais variáveis não-analisadas:
+
+#### (5) **Qual é a média e a mediana das demais variáveis por taxa de retenção dos funcionários?**
+
+A pergunta não foi formulada da forma mais precisa possível, porém para simplificar fiz uma manipulação para saber a média das demais variáveis separada por funcionários que foram demitidos ou não, para saber se outros fatores poderiam ter influenciado na demissão ou retenção dos funcionários:
+
+|      | satisfaction_level | last_evaluation | number_project | average_montly_hours | time_spend_company | work_accident | promotion_last_5years |
+|------|:------------------:|:---------------:|:--------------:|:--------------------:|:------------------:|:-------------:|:---------------------:|
+| left |                    |                 |                |                      |                    |               |                       |
+|   0  |        0.67        |       0.72      |      3.79      |        199.06        |        3.38        |      0.18     |          0.03         |
+|   1  |        0.44        |       0.72      |      3.86      |        207.42        |        3.88        |      0.05     |          0.01         |
+
+Como vemos acima, em média o nível de satisfação dos funcionários demitidos é bem menor em comparação ao nível de satisfação dos funcionários que continuaram na empresa, além de que os funcionários demitidos apresentam em média mais horas de trabalho por mês e também apresentam uma última avaliação de desempenho e produtividade equivalente a última avaliação de desempenho que funcionários retidos obtiveram.
+
+Portanto, com base nas informações acima, já podemos ter alguns insights do porquê os funcionários demitidos fizeram questão de sair da empresa, porém antes de expor tais insights, irei expor a tabela com a mediana das demais variáveis separadas por funcionários demitidos e retidos:
+
+|      | satisfaction_level | last_evaluation | number_project | average_montly_hours | time_spend_company | work_accident | promotion_last_5years |
+|------|:------------------:|:---------------:|:--------------:|:--------------------:|:------------------:|:-------------:|:---------------------:|
+| left |                    |                 |                |                      |                    |               |                       |
+|   0  |        0.69        |       0.71      |       4.0      |         198.0        |         3.0        |      0.0      |          0.0          |
+|   1  |        0.41        |       0.79      |       4.0      |         224.0        |         4.0        |      0.0      |          0.0          |
+
+A mediana traz informações adicionais de que 50 % dos funcionários demitidos receberam uma última avaliação de desempenho acima de 0.79, ou seja, isto confirma que funcionários demitidos tinham mais desempenho de produtividade do que funcionários retidos com base na última avaliação que tais funcionários receberam, os funcionários demitidos tiveram mais anos gastos com a empresa do que funcionários retidos.
+
+À partir das tabelas de média e mediana acima, podemos obter o seguinte insight, de que ** a demissão dos funcionários provavelmente é justificada pelo fato de tais funcionários não se sentirem tão valorizados e reconhecidos pela empresa, isto é, tais funcionários demonstravam em média mais desempenhos de produtividade, gastavam mais horas de trabalho por mês e também já estavam há bastante tempo na empresa, e talvez por esse motivo esses funcionários se sentiram desvalorizados ao ponto de saírem da empresa.
+
