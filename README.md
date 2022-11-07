@@ -107,9 +107,19 @@ O gráfico de barras acima fornece os seguintes insights:
 * Os funcionários que foram demitidos majoritariamente recebiam salários considerados baixo.
 * Os funcionários que recebem altos salários em suma maioria continuam na empresa.
 
-Após tais informações, poderíamos questionar **(a)** se baixos salários influenciam na demissão dos funcionários ou **(b)** se altos salários influenciam na retenção na retenção dos funcionários, no gráfico acima consegui algumas evidências que podem confirmar a tendência de tais hipóteses.
+Após tais informações, poderíamos questionar **(a)** se baixos salários influenciam na demissão dos funcionários ou **(b)** se altos salários influenciam na retenção dos funcionários, no gráfico acima consegui algumas evidências que podem confirmar a tendência de tais hipóteses.
 
 Para continuar a análise com mais aprofundamento, explorei a quantidade de funcionários demitidos e retidos por departamento, para ver se há alguma relação entre retenção e demissão com o departamento que o funcionário trabalha:
 
-**(4)** Qual é a quantidade de retenções e demissões de funcionários por departamento?
+**(4)** **Qual é a quantidade de retenções e demissões de funcionários por departamento?**
+
+Para responder tal questão, manipulei os dados da tabela para obter a quantidade de funcionários demitidos e retidos agrupados por departamento (por conta do tamanho da tabela, não irei publica-la).
+
+Consequentemente, publiquei um gráfico de barras horizontais que demonstrasse visualmente a quantidade de demissões e retenções por cada departamento da empresa:
+
+![](./img/gr_4.png)
+
+Como é observável no gráfico acima, os setores de Técnico, Suporte e Vendas são os departamentos com mais funcionários presentes, e também são os setores que mais demitem funcionários em comparação à outros departamentos, por exemplo, o setor de Vendas é o setor com mais funcionários retidos e ao mesmo tempo é o setor que mais demite funcionários na empresa.
+
+É conclusivo que não há nenhuma evidência de que o departamento tenha alguma relação na demissão ou retenção dos funcionários, até porque estatisticamente é esperado que os setores que mais contratem funcionários, sejam os que mais demitam em comparação à outros setores que não contratam tantos funcionários assim.
 
