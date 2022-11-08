@@ -68,7 +68,7 @@ Com essa questão, quis saber a quantidade de funcionários que foram demitidos 
 
 ![](./img/gr_1.png)
 
-Notavelmente, observamos que mais que 3 / 4 dos funcionários continuam na empresa e somente 23 % dos funcionários foram demitidos.
+Notavelmente, observamos que mais de 3 / 4 dos funcionários continuam na empresa e somente 23 % dos funcionários foram demitidos.
 
 À partir dessa informação inicial, quis saber a quantidade de funcionário por classificação salarial, para depois obter mais insights sobre o dataset:
 
@@ -147,5 +147,31 @@ Portanto, com base nas informações acima, já podemos ter alguns insights do p
 
 A mediana traz informações adicionais de que 50 % dos funcionários demitidos receberam uma última avaliação de desempenho acima de 0.79, ou seja, isto confirma que funcionários demitidos tinham mais desempenho de produtividade do que funcionários retidos com base na última avaliação que tais funcionários receberam, os funcionários demitidos tiveram mais anos gastos com a empresa do que funcionários retidos.
 
-À partir das tabelas de média e mediana acima, podemos obter o seguinte insight, de que ** a demissão dos funcionários provavelmente é justificada pelo fato de tais funcionários não se sentirem tão valorizados e reconhecidos pela empresa, isto é, tais funcionários demonstravam em média mais desempenhos de produtividade, gastavam mais horas de trabalho por mês e também já estavam há bastante tempo na empresa, e talvez por esse motivo esses funcionários se sentiram desvalorizados ao ponto de saírem da empresa.
+À partir das informações de média e mediana acima, podemos obter o seguinte insight abdutivo, de que **a demissão dos funcionários provavelmente é justificada pelo fato de tais funcionários não se sentirem tão valorizados e reconhecidos pela empresa, isto é, tais funcionários demonstram em média mais desempenhos de produtividade, mais horas gastas de trabalho por mês e também demonstram bastante tempo de trabalho na empresa, e talvez por esse motivo esses funcionários se sentiram desvalorizados ao ponto de saírem da empresa.**
+
+Já obtemos alguns insights sobre às variáveis que possam estar atreladas a demissão ou retenção dos funcionários, mas antes de implementar o algoritmo de regressão logística, acrescentei mais uma pergunta para finalizar essa parte de análise exploratória dos dados.
+
+**(5)** **Qual é a taxa de funcionários retidos e demitidos que receberam promoções na empresa nos últimos 5 anos?**
+
+Como a média e nem a mediana indicaram se havia alguma relação entre demissão e retenção com o fato de tais funcionários terem sido promovidos nos últimos 5 anos ou não, então decidi responder essa pergunta para vermos se há alguma relação entre tais variáveis:
+
+![](./img/gr_5.png)
+
+Como é notável no gráfico acima, tal empresa tende majoritariamente a promover os funcionários dentro de um intervalo de 5 anos, é visível que os funcionários retidos tendem à receber mais promoções do que os funcionários que foram demitidos.
+
+Respondida tal questão, preparei o modelo de aprendizagem de máquina para podermos prever a propensão de um funcionário ser demitido ou continuar na empresa:
+
+### Preparação do modelo de Machine Learning:
+
+Antes de separar os dados entre dados de treino e dados de teste para implementar o modelo, separei às variáveis preditoras que serão utilizadas para treinar a modelo à prever a propensão de demissão ou retenção dos funcionários:
+
+* satisfaction_level
+* average_montly_hours
+* time_spend_company
+* promotion_last_5_years
+* salary
+
+Atribuí todas às variáveis acima para um dataframe à parte, e tive como resultado essa tabela abaixo:
+
+
 
