@@ -173,5 +173,99 @@ Antes de separar os dados entre dados de treino e dados de teste para implementa
 
 Atribuí todas às variáveis acima para um dataframe à parte, e tive como resultado essa tabela abaixo:
 
+|   | satisfaction_level | average_montly_hours | time_spend_company | promotion_last_5years | salary_high | salary_low | salary_medium |
+|---|:------------------:|:--------------------:|:------------------:|:---------------------:|:-----------:|:----------:|:-------------:|
+| 0 |        0.38        |          157         |          3         |           0           |      0      |      1     |       0       |
+| 1 |        0.80        |          262         |          6         |           0           |      0      |      0     |       1       |
+| 2 |        0.11        |          272         |          4         |           0           |      0      |      0     |       1       |
+| 3 |        0.72        |          223         |          5         |           0           |      0      |      1     |       0       |
+| 4 |        0.37        |          159         |          3         |           0           |      0      |      1     |       0       |
 
+Transformei a variável classificação salarial em uma variável dummy, ou seja, converti os rótulos 'low', 'medium' e 'high' de classificação salarial em uma variável numérica de 0's e 1's, para poder usar tal variável categórica no modelo de machine learning.
+
+#### Divisão do dataset em dados de treino e dados de teste:
+
+Usei o método train_test_split da biblioteca sklean para dividir os dados do dataset em dados de treino e dados de teste, dividi 80 % dos dados para treino e os outros 20 % para teste:
+
+```# Divisão do dataset em dados de treino e dados de teste
+# 80 % dos dados serão usados para treino, e somente 20 % serão usados para testar a eficácia preditiva do modelo treinado:
+
+X_train, X_test, y_train, y_test = train_test_split(sub_df, df.left, test_size = 0.2)
+```
+
+Após tal divisão entre dados de treino e de teste, importei o algoritmo de regressão logística da biblioteca sktlearn para prepar o modelo, treina-lo e consequentemente testa-lo com os dados de teste para vermos à sua eficácia preditiva:
+
+```
+# Importação do algoritmo de aprendizagem chamado regressão logística, que é usado principalmente para problemas de classificação:
+
+from sklearn.linear_model import LogisticRegression
+```
+
+Concluída a importação do algoritmo, atribui tal algoritmo à uma variável chamada model:
+
+```
+# Atribuição de tal algoritmo à variável 'model':
+
+model = LogisticRegression()
+```
+
+Consequentemente, treinei o modelo com os dados de treino:
+
+```
+# Método .fit aplicado para treinar o modelo de regressão logística com os dados de treino:
+
+model.fit(X_train, y_train)
+```
+
+Inseri os dados de teste no modelo treinado para ver às predições que tal modelo realizaria com dados que não vistos anteriormente:
+
+```
+# Aplicação da função .predict para prevermos se os funcionários continuariam ou se demitiriam da empresa, dado os dados de teste da variável X:
+
+model.predict(X_test)
+```
+
+Utilizei novamente os dados de teste para verificar a eficácia preditiva de tal modelo:
+
+```
+# Verificação da precisão e acurácia preditiva do modelo:
+
+model.score(X_test, y_test).round(2)
+```
+
+O resultado do código acima foi 0.78, ou seja, o modelo apresenta uma precisão razoavelmente eficaz e confiável para realizar previsões sobre às propensões futuras de funcionários se demitirem ou não da empresa.
+
+Finalizada a etapa de preparação do modelo, suponhamos que o gerente de RH queira saber se dois funcionários que estão na empresa há algum tempo apresentam propensão de se demitirem ou não nos próximos meses.
+
+**(a)** O primeiro funcionário chama-se Marcelo, Marcelo diz ter uma satisfação de 0.80 com a empresa, Marcelo trabalha 270 horas por mês, tem 4 anos que atua na empresa, recebeu promoção nos últimos 5 anos e recebe um salário consideravelmente alto na empresa.
+
+Com o uso do modelo de regressão logística treinado, irei implementar os dados do Marcelo para saber a propensão dele se demitir ou continuar na empresa:
+
+```
+# Previsão para saber se um funcionário hipotético continuaria na empresa ou não, dado os demais dados das demais variáveis:
+
+model.predict([[0.80, 270, 4, 1, 1, 0, 0]])
+```
+Saída da predição acima:
+```
+array([0])
+```
+Portanto, com base na predição do modelo acima, é bem provável que Marcelo continue na empresa ao invés de demitir-se:
+
+**(b)** O segundo funcionário chama-se Leandro, Leandro diz ter uma satisfação baixa de 0.20 com a empresa, Leandro trabalha 200 horas por mês, têm 3 anos na empresa, não recebeu promoção alguma nos últimos anos e recebe um salário consideravelmente baixo na empresa:
+
+```
+# Mais uma previsão para sabermos
+# se um funcionário hipotético continuaria na empresa ou não, dado os demais dados das demais variáveis:
+
+model.predict([[0.25, 200, 3, 0, 0, 1, 0]])
+```
+Saída da predição acima:
+```
+array([1])
+```
+
+Logo, à partir da predição acima, inferimos que é bem provável que Leandro demita-se da empresa nos próximos meses (ou anos).
+
+Ao obter tal previsão sobre a propensão da demissão de Leandro, o gerente de RH poderia tentar aplicar medidas que pudessem aumentar a satisfação de Leandro com a empresa e que pudessem evitar a sua futura demissão, caso Leandro seja um funcionário altamento produtivo para a empresa.
 
