@@ -117,7 +117,7 @@ Para responder tal questão, manipulei os dados da tabela para obter a quantidad
 
 Consequentemente, publiquei um gráfico de barras horizontais que demonstrasse visualmente a quantidade de demissões e retenções por cada departamento da empresa:
 
-![](./img/gr_4.png)
+![](./img/gr_6.png)
 
 Como é observável no gráfico acima, os setores de Técnico, Suporte e Vendas são os departamentos com mais funcionários presentes, e também são os setores que mais demitem funcionários em comparação à outros departamentos, por exemplo, o setor de Vendas é o setor com mais funcionários retidos e ao mesmo tempo é o setor que mais demite funcionários na empresa.
 
