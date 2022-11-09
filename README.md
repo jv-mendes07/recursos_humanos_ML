@@ -250,7 +250,7 @@ Saída da predição acima:
 ```
 array([0])
 ```
-Portanto, com base na predição do modelo acima, é bem provável que Marcelo continue na empresa ao invés de demitir-se:
+Portanto, com base na predição do modelo acima, é bem provável que Marcelo continue na empresa ao invés de demitir-se.
 
 **(b)** O segundo funcionário chama-se Leandro, Leandro diz ter uma satisfação baixa de 0.20 com a empresa, Leandro trabalha em média 200 horas por mês, têm 3 anos na empresa, não recebeu promoção alguma nos últimos anos e recebe um salário consideravelmente baixo na empresa:
 
