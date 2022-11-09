@@ -267,7 +267,7 @@ array([1])
 
 Logo, à partir da predição acima, inferimos que é bem provável que Leandro demita-se da empresa nos próximos meses (ou anos).
 
-Ao obter tal previsão sobre a propensão da demissão de Leandro, o gerente de RH poderia tentar aplicar medidas que pudessem aumentar a satisfação de Leandro com a empresa e que pudessem evitar a sua futura demissão, caso Leandro seja um funcionário altamento produtivo para a empresa.
+Ao obter tal previsão sobre a propensão da demissão de Leandro, o gerente de RH poderia tentar aplicar medidas que pudessem aumentar a satisfação de Leandro com a empresa e que pudessem evitar a sua futura demissão, caso Leandro seja um funcionário altamente produtivo para a empresa.
 
 Após as etapas de tratamento, análise exploratória, preparação e aplicação do modelo de machine learning, considero ter encerrado tal projeto e espero que tal projeto analítico tenha sido instrutivo à qualquer um que tenha chegado até aqui.
 
