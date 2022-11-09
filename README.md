@@ -237,7 +237,7 @@ O resultado do código acima foi 0.78, ou seja, o modelo apresenta uma precisão
 
 Finalizada a etapa de preparação do modelo, suponhamos que o gerente de RH queira saber se dois funcionários que estão na empresa há algum tempo apresentam propensão de se demitirem ou não nos próximos meses.
 
-**(a)** O primeiro funcionário chama-se Marcelo, Marcelo diz ter uma satisfação de 0.80 com a empresa, Marcelo trabalha 270 horas por mês, tem 4 anos que atua na empresa, recebeu promoção nos últimos 5 anos e recebe um salário consideravelmente alto na empresa.
+**(a)** O primeiro funcionário chama-se Marcelo, Marcelo diz ter uma satisfação de 0.80 com a empresa, Marcelo trabalha em média 270 horas por mês, tem 4 anos que atua na empresa, recebeu promoção nos últimos 5 anos e recebe um salário consideravelmente alto na empresa.
 
 Com o uso do modelo de regressão logística treinado, irei implementar os dados do Marcelo para saber a propensão dele se demitir ou continuar na empresa:
 
@@ -252,7 +252,7 @@ array([0])
 ```
 Portanto, com base na predição do modelo acima, é bem provável que Marcelo continue na empresa ao invés de demitir-se:
 
-**(b)** O segundo funcionário chama-se Leandro, Leandro diz ter uma satisfação baixa de 0.20 com a empresa, Leandro trabalha 200 horas por mês, têm 3 anos na empresa, não recebeu promoção alguma nos últimos anos e recebe um salário consideravelmente baixo na empresa:
+**(b)** O segundo funcionário chama-se Leandro, Leandro diz ter uma satisfação baixa de 0.20 com a empresa, Leandro trabalha em média 200 horas por mês, têm 3 anos na empresa, não recebeu promoção alguma nos últimos anos e recebe um salário consideravelmente baixo na empresa:
 
 ```
 # Mais uma previsão para sabermos
