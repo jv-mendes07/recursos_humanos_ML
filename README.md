@@ -192,8 +192,44 @@ Usei o método train_test_split da biblioteca sklean para dividir os dados do da
 
 X_train, X_test, y_train, y_test = train_test_split(sub_df, df.left, test_size = 0.2)
 ```
+#### Feature Scaling:
 
-Após tal divisão entre dados de treino e de teste, importei o algoritmo de floresta aleatória da biblioteca sktlearn para preparar o modelo, treina-lo e consequentemente testa-lo com os dados de teste para vermos à sua eficácia preditiva:
+O Feature Scaling é uma fase importante em um projeto de aprendizagem de máquina, em que basicamente colocamos todas às variáveis na mesma escala, para que o modelo não considere umas variáveis mais relevantes do que outras por terem uma escala numérica mais alta, por esse motivo, para evitar esse viés do modelo preditivo é recomendado colocar todas às variáveis na mesma escala de intervalo.
+
+Neste caso, usei a padronização para colocar todas às variáveis no intervalo escalar de -3 e +3, e como a variável target (variável-alvo) era somente 0's e 1's, então logicamente por tal variável já estar na escala de -3 e +3, não apliquei tal padronização na variável target, mas unicamente nas variáveis preditoras:
+
+```
+# Importação do método que facilitará na padronização de escala:
+
+from sklearn.preprocessing import StandardScaler
+```
+
+Após isto, atribui tal método à uma variável separada:
+
+```
+# Método atribuído à uma variável:
+
+sc = StandardScaler()
+```
+
+Logo, padronizei tanto os dados de treino quanto os dados de teste:
+
+```
+# Padronização de escala dos dados de treino, para que todas variáveis preditoras esteja na mesma escala de -3 e +3:
+
+X_train_2 = sc.fit_transform(X_train)
+```
+
+```
+# Padronização de escala dos dados de teste:
+
+X_test_2 = sc.transform(X_test)
+```
+Concluída essa fase de padronização dos dados, fui diretamente para a importação e implementação do modelo de floresta aleatória sobre o conjunto de dados.
+
+#### Treino do modelo de floresta aleatória:
+
+Após tal divisão entre dados de treino e de teste, e após padronizar os dados, importei o algoritmo de floresta aleatória da biblioteca sktlearn para preparar o modelo, treina-lo e consequentemente testa-lo com os dados de teste para vermos à sua eficácia preditiva:
 
 ```
 # Importação do algoritmo de aprendizagem chamado floresta aleatória, que é usado principalmente para problemas de classificação:
@@ -217,6 +253,8 @@ Consequentemente, treinei o modelo com os dados de treino:
 random_forest.fit(X_train_2, y_train)
 ```
 
+#### Verificação da acurácia preditiva do modelo treinado:
+
 Inseri os dados de teste no modelo treinado para ver às predições que tal modelo realizaria com dados que não vistos anteriormente:
 
 ```
@@ -234,6 +272,12 @@ random_forest.score(X_test, y_test).round(2)
 ```
 
 O resultado do código acima foi 0.98, ou seja, o modelo apresenta uma precisão de 98 % nas previsões, isto é, é um modelo absurdamente eficaz e confiável para realizar previsões sobre às propensões futuras de funcionários se demitirem ou não da empresa.
+
+Após ver o quão preciso o modelo é, decidi construir uma confusão de matriz para ter uma representação visual da quantidade de previsões corretas e erradas que foram realizadas pelo modelo:
+
+
+
+#### Previsão de um caso hipotético com o modelo criado:
 
 Finalizada a etapa de preparação do modelo, suponhamos que o gerente de RH queira saber se um funcionários que está na empresa há algum tempo apresenta propensão de se demitir ou não nos próximos meses.
 
