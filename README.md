@@ -275,7 +275,9 @@ O resultado do código acima foi 0.98, ou seja, o modelo apresenta uma precisão
 
 Após ver o quão preciso o modelo é, decidi construir uma confusão de matriz para ter uma representação visual da quantidade de previsões corretas e erradas que foram realizadas pelo modelo:
 
+![](./img/gr_7.png)
 
+Como é vísivel, o modelo previu corretamente que 2248 funcionários continuaram na empresa e 701 foram demitidos da empresa, enquanto ao mesmo tempo o modelo errou ao prever que 16 continuaram na empresa, mas na verdade foram demitidos, e errou ao prever que 35 seriam demitidos, mas que na verdade continuaram na empresa.
 
 #### Previsão de um caso hipotético com o modelo criado:
 
