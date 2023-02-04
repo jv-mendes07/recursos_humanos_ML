@@ -3,7 +3,7 @@
 
  Suponhamos hipoteticamente que o gerente do setor de RH (Recursos Humanos) queira que façamos uma análise descritiva e preditiva que ajude-o à prever quais são os fatores que influenciam na demissão ou na retenção de um funcionário na empresa, os objetivos do gerente ao obter tal análise são **(1)** implementar medidas no setor de RH que possam evitar a demissão futura dos funcionários e também **(2)** ter um modelo preditivo que o ajude a prever probabilisticamente a propensão de um funcionário demitir-se ou não da empresa, com base em outras variáveis influenciáveis.
 
-Com base nos objetivos hipotéticos citados acima, realizei uma limpeza e uma análise exploratória no conjunto de dados de RH de uma empresa fictícia, e em subsequência treinei um algoritmo de regressão logística para obter um modelo preditivo que ajudasse a prever a propensão de um funcionário da empresa demitir-se ou não no futuro.
+Com base nos objetivos hipotéticos citados acima, realizei uma limpeza e uma análise exploratória no conjunto de dados de RH de uma empresa fictícia, e em subsequência apliquei um algoritmo de floresta aleatória para obter um modelo preditivo que ajudasse a prever a propensão de um funcionário da empresa demitir-se ou não no futuro.
 
 ![](./img/capa.jpg)
 
@@ -193,12 +193,12 @@ Usei o método train_test_split da biblioteca sklean para dividir os dados do da
 X_train, X_test, y_train, y_test = train_test_split(sub_df, df.left, test_size = 0.2)
 ```
 
-Após tal divisão entre dados de treino e de teste, importei o algoritmo de regressão logística da biblioteca sktlearn para prepar o modelo, treina-lo e consequentemente testa-lo com os dados de teste para vermos à sua eficácia preditiva:
+Após tal divisão entre dados de treino e de teste, importei o algoritmo de floresta aleatória da biblioteca sktlearn para preparar o modelo, treina-lo e consequentemente testa-lo com os dados de teste para vermos à sua eficácia preditiva:
 
 ```
-# Importação do algoritmo de aprendizagem chamado regressão logística, que é usado principalmente para problemas de classificação:
+# Importação do algoritmo de aprendizagem chamado floresta aleatória, que é usado principalmente para problemas de classificação:
 
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 ```
 
 Concluída a importação do algoritmo, atribui tal algoritmo à uma variável chamada model:
@@ -206,15 +206,15 @@ Concluída a importação do algoritmo, atribui tal algoritmo à uma variável c
 ```
 # Atribuição de tal algoritmo à variável 'model':
 
-model = LogisticRegression()
+random_forest = RandomForestClassifier()
 ```
 
 Consequentemente, treinei o modelo com os dados de treino:
 
 ```
-# Método .fit aplicado para treinar o modelo de regressão logística com os dados de treino:
+# Método .fit aplicado para treinar o modelo de floresta aleatória com os dados de treino:
 
-model.fit(X_train, y_train)
+random_forest.fit(X_train_2, y_train)
 ```
 
 Inseri os dados de teste no modelo treinado para ver às predições que tal modelo realizaria com dados que não vistos anteriormente:
@@ -222,7 +222,7 @@ Inseri os dados de teste no modelo treinado para ver às predições que tal mod
 ```
 # Aplicação da função .predict para prevermos se os funcionários continuariam ou se demitiriam da empresa, dado os dados de teste da variável X:
 
-model.predict(X_test)
+random_forest.predict(X_test_2)
 ```
 
 Utilizei novamente os dados de teste para verificar a eficácia preditiva de tal modelo:
@@ -230,16 +230,16 @@ Utilizei novamente os dados de teste para verificar a eficácia preditiva de tal
 ```
 # Verificação da precisão e acurácia preditiva do modelo:
 
-model.score(X_test, y_test).round(2)
+random_forest.score(X_test, y_test).round(2)
 ```
 
-O resultado do código acima foi 0.78, ou seja, o modelo apresenta uma precisão razoavelmente eficaz e confiável para realizar previsões sobre às propensões futuras de funcionários se demitirem ou não da empresa.
+O resultado do código acima foi 0.98, ou seja, o modelo apresenta uma precisão de 98 % nas previsões, isto é, é um modelo absurdamente eficaz e confiável para realizar previsões sobre às propensões futuras de funcionários se demitirem ou não da empresa.
 
-Finalizada a etapa de preparação do modelo, suponhamos que o gerente de RH queira saber se dois funcionários que estão na empresa há algum tempo apresentam propensão de se demitirem ou não nos próximos meses.
+Finalizada a etapa de preparação do modelo, suponhamos que o gerente de RH queira saber se um funcionários que está na empresa há algum tempo apresenta propensão de se demitir ou não nos próximos meses.
 
-**(a)** O primeiro funcionário chama-se Marcelo, Marcelo diz ter uma satisfação de 0.80 com a empresa, Marcelo trabalha em média 270 horas por mês, tem 4 anos que atua na empresa, recebeu promoção nos últimos 5 anos e recebe um salário consideravelmente alto na empresa.
+**(a)** O funcionário chama-se Marcelo, Marcelo diz ter uma satisfação de 0.80 com a empresa, Marcelo trabalha em média 270 horas por mês, tem 4 anos que atua na empresa, recebeu promoção nos últimos 5 anos e recebe um salário consideravelmente alto na empresa.
 
-Com o uso do modelo de regressão logística treinado, irei implementar os dados do Marcelo para saber a propensão dele se demitir ou continuar na empresa:
+Com o uso do modelo de floresta aleatória treinado, irei implementar os dados do Marcelo para saber a propensão dele se demitir ou continuar na empresa:
 
 ```
 # Previsão para saber se um funcionário hipotético continuaria na empresa ou não, dado os demais dados das demais variáveis:
@@ -252,22 +252,7 @@ array([0])
 ```
 Portanto, com base na predição do modelo acima, é bem provável que Marcelo continue na empresa ao invés de demitir-se.
 
-**(b)** O segundo funcionário chama-se Leandro, Leandro diz ter uma satisfação baixa de 0.20 com a empresa, Leandro trabalha em média 200 horas por mês, têm 3 anos na empresa, não recebeu promoção alguma nos últimos anos e recebe um salário consideravelmente baixo na empresa:
-
-```
-# Mais uma previsão para sabermos
-# se um funcionário hipotético continuaria na empresa ou não, dado os demais dados das demais variáveis:
-
-model.predict([[0.25, 200, 3, 0, 0, 1, 0]])
-```
-Saída da predição acima:
-```
-array([1])
-```
-
-Logo, à partir da predição acima, inferimos que é bem provável que Leandro demita-se da empresa nos próximos meses (ou anos).
-
-Ao obter tal previsão sobre a propensão da demissão de Leandro, o gerente de RH poderia tentar aplicar medidas que pudessem aumentar a satisfação de Leandro com a empresa e que pudessem evitar a sua futura demissão, caso Leandro seja um funcionário altamente produtivo para a empresa.
+Ao obter tal previsão sobre a propensão da demissão de um funcionário, o gerente de RH poderia tentar aplicar medidas que pudessem aumentar a satisfação de tais funcionários com o ambiente de trabalho da empresa, e que assim, pudessem evitar a sua futura demissão, caso tais empregados sejam funcionários altamente produtivos para a empresa.
 
 Após as etapas de tratamento, análise exploratória, preparação e aplicação do modelo de machine learning, considero ter encerrado tal projeto e espero que tal projeto analítico tenha sido instrutivo à qualquer um que tenha chegado até aqui.
 
